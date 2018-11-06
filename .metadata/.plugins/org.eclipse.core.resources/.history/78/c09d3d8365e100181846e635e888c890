@@ -1,0 +1,100 @@
+package practica;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class registroSearch extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNomAPE;
+	private JTextField textField;
+	private JTable table;
+	private DefaultTableModel modelo;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					registroSearch frame = new registroSearch();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public registroSearch() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 684, 442);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblIngreseNombreY = new JLabel("Ingrese nombre y apellido");
+		lblIngreseNombreY.setBounds(34, 26, 288, 14);
+		contentPane.add(lblIngreseNombreY);
+		
+		
+		txtNomAPE = new JTextField();
+		txtNomAPE.setBounds(34, 51, 326, 20);
+		contentPane.add(txtNomAPE);
+		txtNomAPE.setColumns(10);
+		
+		JLabel lblIngresId = new JLabel("ingres ID");
+		lblIngresId.setBounds(34, 83, 46, 14);
+		contentPane.add(lblIngresId);
+		
+		textField = new JTextField();
+		textField.setBounds(34, 108, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnEjecutar = new JButton("Ejecutar");
+		btnEjecutar.setBounds(191, 91, 89, 23);
+		contentPane.add(btnEjecutar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 148, 648, 244);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		modelo=new DefaultTableModel();
+		modelo.addColumn("ID");
+		modelo.addColumn("Apellido");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Direecion");
+		modelo.addColumn("Edad");
+		modelo.addColumn("Fecha Nacimiento");
+		table.setModel(modelo);
+		listar();
+
+	}
+
+	private void listar() {
+		// TODO Auto-generated method stub
+		modelo.setRowCount(0);
+		String a[]={"1","Alcazar","Manuel"};
+		
+		modelo.addRow(a);
+	}
+}
